@@ -9,14 +9,16 @@ import com.rockwell.mes.apps.ebr.ifc.swing.PhaseColumnLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
-public class gbn0100 extends JFrame {
+public class gbn0100<selectBatchtype> extends JFrame {
 
     private JTextField equipmentId;
     private JTextField batchNumber;
+    private JComboBox  selectBatchtype;
     private JButton generateBatchnumber;
 
-    private JButton test;
+
 
     public gbn0100() throws HeadlessException{
 
@@ -60,14 +62,7 @@ public class gbn0100 extends JFrame {
 
         contentPanel.add(batchNumberlabel, CC.xywh(1, 4, 4, 1, CC.FILL, CC.CENTER));
 
-        JComboBox cmb=new JComboBox();    //创建JComboBox
-        cmb.addItem("--Please select type of batch number--");//向下拉列表中添加一项
-        cmb.addItem("Wating for cleaning bathch number");
-        cmb.addItem("Cleaning batch number");
-        cmb.addItem("Sterilization batch number");
-        cmb.addItem("Assembly batch number");
-
-        contentPanel.add(cmb, CC.xywh(2, 2, 4, 1, CC.FILL, CC.CENTER));
+        contentPanel.add( selectBatchtype, CC.xywh(2, 2, 4, 1, CC.FILL, CC.CENTER));
 
         contentPanel.add(equipmentId, CC.xywh(2, 3, 4, 1, CC.FILL, CC.CENTER));
 
@@ -84,8 +79,34 @@ public class gbn0100 extends JFrame {
 
     }
     public  void init(){
+
+        String str1 = "--Please select type of batch number--";
+        String str2 = "Wating for cleaning bathch number";
+        String str3 = "Cleaning batch number";
+        String str4 = "Sterilization batch number";
+        String str5 = "Assembly batch number";
         equipmentId = new JTextField();
         batchNumber= new JTextField();
+
+        //List<String> list = new ArrayList<String>();
+        List list = new List(5,false);
+
+        list.add(str1);
+        list.add(str2);
+        list.add(str3);
+        list.add(str4);
+        list.add(str5);
+
+        selectBatchtype = new JComboBox();
+
+        selectBatchtype.addItem(list.getItem(0));
+        selectBatchtype.addItem(list.getItem(1));
+        selectBatchtype.addItem(list.getItem(2));
+        selectBatchtype.addItem(list.getItem(3));
+        selectBatchtype.addItem(list.getItem(4));
+
+
+
         generateBatchnumber = new JButton("Genearte");
     }
 }
