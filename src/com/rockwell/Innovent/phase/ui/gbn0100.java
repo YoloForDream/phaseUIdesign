@@ -1,15 +1,21 @@
 package com.rockwell.Innovent.phase.ui;
 
+import com.jgoodies.common.internal.IActionBean;
 import com.jgoodies.forms.builder.PanelBuilder;
 import com.jgoodies.forms.debug.FormDebugPanel;
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
 import com.rockwell.mes.apps.ebr.ifc.phase.ui.UIConstants;
 import com.rockwell.mes.apps.ebr.ifc.swing.PhaseColumnLayout;
+import org.apache.ecs.vxml.Return;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class gbn0100<selectBatchtype> extends JFrame {
 
@@ -17,8 +23,7 @@ public class gbn0100<selectBatchtype> extends JFrame {
     private JTextField batchNumber;
     private JComboBox  selectBatchtype;
     private JButton generateBatchnumber;
-
-
+    ActionEvent e;
 
     public gbn0100() throws HeadlessException{
 
@@ -73,6 +78,8 @@ public class gbn0100<selectBatchtype> extends JFrame {
         //JButton confirmButton = ((PhaseColumnLayout) layoutPanel.getLayout()).getConfirmButton();
         contentPanel.add(generateBatchnumber, CC.xywh(3, 4, 4, 1, CC.RIGHT, CC.CENTER));
 
+        actionListener(generateBatchnumber);
+
         add(contentPanel.getPanel());
 
         //layoutPanel.add(contentPanel);
@@ -108,6 +115,43 @@ public class gbn0100<selectBatchtype> extends JFrame {
 
 
         generateBatchnumber = new JButton("Genearte");
+
+
+    }
+    public void actionListener(JButton btn) {
+
+        btn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                generateBatchnumberbytype(selectBatchtype.getSelectedItem().toString());
+                //System.out.println("你按下了" + btn.getText());
+            }
+        });
+
+    }
+    public void generateBatchnumberbytype(String batchType) {
+
+        String type = batchType;
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyMM");
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyyMM");
+        Date date = new Date();
+
+        switch (type) {
+            case "Wating for cleaning bathch number":
+                batchNumber.setText("M2-DHT" + dateFormat1.format(date));
+            break;
+            case "Cleaning batch number":
+                if(equipmentId.getText()!=null){
+                batchNumber.setText("M2"+"-"+equipmentId.getText()+"-" + dateFormat1.format(date));}
+            break;
+            case "Sterilization batch number":
+                batchNumber.setText("M2"+dateFormat2.format(date)+"-"+equipmentId.getText());
+            break;
+            case "Assembly batch number":
+                batchNumber.setText("M2-"+"AS"+ dateFormat1.format(date));
+            break;
+
+        }
     }
 }
 
