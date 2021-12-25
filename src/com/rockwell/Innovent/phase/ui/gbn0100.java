@@ -83,7 +83,6 @@ public class gbn0100 extends JFrame {
 
     }
     public  void init(){
-
         equipmentId = new JTextField();
         batchNumber= new JTextField();
         generateBatchnumber = new JButton("Genearte");
