@@ -16,6 +16,7 @@ public class gbn0100 extends JFrame {
     private JTextField batchNumber;
     private JButton generateBatchnumber;
 
+    private JButton test;
 
     public gbn0100() throws HeadlessException{
 
