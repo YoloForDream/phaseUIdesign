@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="phaseUi-libs">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/phaseUi-libs" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/phaseUi-libs/JavaEventing.jar!/javadoc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/phaseUi-libs" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/phaseUi-libs" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/phaseUi-libs" recursive="false" type="SOURCES" />
+  </library>
+</component>
